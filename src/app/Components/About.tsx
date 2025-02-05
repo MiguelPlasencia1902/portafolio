@@ -56,7 +56,6 @@ const Item = styled(Sheet)(({ theme }) => ({
   textAlign: "center",
   fontWeight: theme.fontWeight.md,
   color: "white",
-  border: "1px solid",
   padding: theme.spacing(2),
   borderRadius: theme.radius.md,
   flexGrow: 1,
