@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import "./styles/global.css";
 import Button from "@mui/joy/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import Zoom from '@mui/material/Zoom';
 
 
 export default function Home() {
@@ -47,7 +48,8 @@ export default function Home() {
               textAlign: "center",
             }}
           >
-            {/* Imagen circular más grande */}
+            {/* Imagen circular*/}
+            <Zoom in={true} style={{ transitionDelay: true ? '100ms' : '0ms' }}>
             <Grid item>
               <Box
                 component="img"
@@ -62,6 +64,7 @@ export default function Home() {
                 }}
               />
             </Grid>
+            </Zoom>
 
             {/* Texto */}
             <Grid item>
