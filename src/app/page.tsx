@@ -1,10 +1,11 @@
-import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import './styles/global.css'
-import { Grid2 } from '@mui/material';
+import * as React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import "./styles/global.css";
+import Button from "@mui/joy/Button";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 
 export default function Home() {
@@ -14,25 +15,25 @@ export default function Home() {
       <Box
         component="section"
         sx={{
-          bgcolor: '#cfe8fc',
-          height: '100vh',
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'column',
+          bgcolor: "#cfe8fc",
+          height: "100vh",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
         }}
       >
         <Container
           className="container-text-logo-presentation"
           maxWidth={false}
           sx={{
-            width: '100%',
-            height: '100%',
-            bgcolor: '#222222',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            width: "100%",
+            height: "100%",
+            bgcolor: "#050F21",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Grid
@@ -40,10 +41,10 @@ export default function Home() {
             direction="column"
             spacing={2}
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              textAlign: 'center',
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
             }}
           >
             {/* Imagen circular más grande */}
@@ -54,9 +55,9 @@ export default function Home() {
                 alt="Profile"
                 sx={{
                   width: 150, // Tamaño más grande
-                  height: 150, 
-                  borderRadius: '50%', // Hace la imagen circular
-                  objectFit: 'cover', // Ajusta la imagen dentro del círculo sin deformarla
+                  height: 150,
+                  borderRadius: "50%", // Hace la imagen circular
+                  objectFit: "cover", // Ajusta la imagen dentro del círculo sin deformarla
                   boxShadow: 3, // Agrega una pequeña sombra
                 }}
               />
@@ -67,6 +68,18 @@ export default function Home() {
               <h2>Hi, I'm Miguel 👋</h2>
               <h1>Frontend Developer</h1>
               <h2>That loves creating web apps</h2>
+            </Grid>
+            {/* Boton */}
+            <Grid item>
+              <Button
+                component="a"
+                href="/"
+                sx={{ fontSize: 20, color: "white", background: '#4675F5'}}
+                endDecorator={<ArrowForwardIcon />}
+                
+              >
+                Comenzar
+              </Button>
             </Grid>
           </Grid>
         </Container>
