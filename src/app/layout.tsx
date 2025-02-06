@@ -4,6 +4,7 @@ import { CssBaseline } from '@mui/material';
 import dynamic from 'next/dynamic';
 
 const About = dynamic(() => import('./Components/About'))
+const Drawer = dynamic(() => import('./Components/DrawerAppBar'))
 
 export const metadata: Metadata = {
   title: "Portafolio",
@@ -28,7 +29,7 @@ export default function RootLayout({
            backgroundColor: '#0F1214'
         }}>
         {/* Navbar */}
-        
+        <Drawer/>
         {/* Contenido */}
         <main>
           {children}
