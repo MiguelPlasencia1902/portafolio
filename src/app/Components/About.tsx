@@ -14,11 +14,11 @@ import "../styles/global.css";
 
 const data = [
   {
-    src: "https://w7.pngwing.com/pngs/410/100/png-transparent-web-development-html-responsive-web-design-logo-javascript-html-angle-web-design-text-thumbnail.png",
+    src: "https://res.cloudinary.com/dfjn83ofc/image/upload/f_png/v1738807180/SS_zwzbzc.png",
     title: "HTML",
   },
   {
-    src: "https://img.icons8.com/fluent/512/css3.png",
+    src: "https://ultimatecourses.com/assets/category/css-fcba6b473cb1125595dc28163be24eb673907258b5f6f6c82967a0587a9df20c.svg",
     title: "CSS",
   },
   {
@@ -38,11 +38,11 @@ const data = [
     title: "Git",
   },
   {
-    src: "https://avatars.slack-edge.com/2020-11-25/1527503386626_319578f21381f9641cd8_512.png",
+    src: "https://res.cloudinary.com/dfjn83ofc/image/upload/v1738807180/Gato_kfqtvx.png",
     title: "GitHub",
   },
   {
-    src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz1RzTzQFA_9h3qbValKOs0mjsATDkHwMOTA&s",
+    src: "https://res.cloudinary.com/dfjn83ofc/image/upload/v1738807180/ssss_bbmrjq.png",
     title: "Svelte",
   },
   {
@@ -70,20 +70,20 @@ export default function About() {
       sx={{ bgcolor: "#061738" }}
     >
       <CssBaseline />
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%", padding: '1rem' }}>
         <Stack
           spacing={2}
           direction={{ xs: "column", sm: "row" }}
           useFlexGap
-          sx={{ flexWrap: "wrap", padding: "2rem"}}
+          sx={{ flexWrap: "wrap", padding: "5%"}}
         >
           <Item sx={{ width: "100%", display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
-            <h2>About me</h2>
+            <h2>About</h2>
             <br />
             <span style={{display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'left'}}>¡Hola! 👋 Soy un estudiante de Ingeniería de Sistemas apasionado por el desarrollo web y 
               la tecnología. Me encanta aprender y explorar nuevas herramientas para crear soluciones eficientes e innovadoras.</span>
           </Item>
-          <Item sx={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}><h2>Education</h2>
+          <Item sx={{display: 'flex', flexDirection: 'column', alignItems: 'start', width: 'auto'}}><h2>Education</h2>
           <li className="custom-li"><span style={{fontSize: '1.1rem', marginLeft:'-0.30rem'}}>Systems Engineer</span></li>
           <li style={{textDecoration: 'none', listStyle: 'none', paddingLeft: '1.2rem', fontStyle: 'italic',}}>San Ignacio de Loyola University</li>
           <li style={{textDecoration: 'none', listStyle: 'none', paddingLeft: '1.2rem', fontStyle: 'italic'}}>2021 - present</li>
@@ -92,13 +92,15 @@ export default function About() {
           <li style={{textDecoration: 'none', listStyle: 'none', paddingLeft: '1.2rem', fontStyle: 'italic'}}>2023 - present</li>
           </Item>
           
-          <Item sx={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
+          <Item sx={{display: 'flex', flexDirection: 'column', alignItems: 'start', width: 'auto', backgroundColor: 'transparent'}}>
             <h2>Tech Stack:</h2>
             <Box
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
+                overflow: 'auto',
                 scrollSnapType: "x mandatory",
+                backgroundColor: 'transparent',
                 "& > *": {
                   scrollSnapAlign: "center",
                 },
@@ -110,23 +112,23 @@ export default function About() {
                   orientation="vertical"
                   size="sm"
                   key={item.title}
-                  variant="outlined"
                   sx={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    background: "none",
-                    border: "none",
+                    backgroundColor: "transparent",
+                    border: 'none'
                   }}
                 >
                   <AspectRatio
-                    ratio="1"
-                    sx={{ minWidth: 50, maxHeight: 50, background: "none" }}
+                    objectFit="contain"
+                    sx={{ minWidth: 65, maxHeight: 30, borderRadius: '0'}}
                   >
                     <img
                       srcSet={`${item.src}`}
                       src={`${item.src}`}
                       alt={item.title}
+                      style={{backgroundColor: '#061738'}}
                     />
                   </AspectRatio>
                   <Box sx={{ whiteSpace: "nowrap", mx: 1 }}>
