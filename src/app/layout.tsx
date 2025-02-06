@@ -26,7 +26,7 @@ export default function RootLayout({
            height: "100vh", // Añadido para asegurar que ocupe toda la pantalla
            display: "flex",  // Para usar flexbox
            flexDirection: "column", // Apilar el contenido (navbar, main, footer)
-           backgroundColor: '#0F1214'
+           backgroundColor: '#061738'
         }}>
         {/* Navbar */}
         <Drawer/>

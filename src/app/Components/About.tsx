@@ -11,7 +11,6 @@ import Typography from "@mui/joy/Typography";
 import Card from "@mui/joy/Card";
 import "../styles/global.css";
 
-
 const data = [
   {
     src: "https://res.cloudinary.com/dfjn83ofc/image/upload/f_png/v1738807180/SS_zwzbzc.png",
@@ -70,37 +69,114 @@ export default function About() {
       sx={{ bgcolor: "#061738" }}
     >
       <CssBaseline />
-      <Box sx={{ width: "100%", padding: '1rem' }}>
+      <Box sx={{ width: "100%", padding: "1rem" }}>
         <Stack
           spacing={2}
           direction={{ xs: "column", sm: "row" }}
           useFlexGap
-          sx={{ flexWrap: "wrap", padding: "5%"}}
+          sx={{ flexWrap: "wrap", padding: "5%" }}
         >
-          <Item sx={{ width: "100%", display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
+          <Item
+            sx={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "start",
+            }}
+          >
             <h2>About</h2>
             <br />
-            <span style={{display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'left'}}>¡Hola! 👋 Soy un estudiante de Ingeniería de Sistemas apasionado por el desarrollo web y 
-              la tecnología. Me encanta aprender y explorar nuevas herramientas para crear soluciones eficientes e innovadoras.</span>
+            <span
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "left",
+              }}
+            >
+              ¡Hola! 👋 Soy un estudiante de Ingeniería de Sistemas apasionado
+              por el desarrollo web y la tecnología. Me encanta aprender y
+              explorar nuevas herramientas para crear soluciones eficientes e
+              innovadoras.
+            </span>
           </Item>
-          <Item sx={{display: 'flex', flexDirection: 'column', alignItems: 'start', width: 'auto'}}><h2>Education</h2>
-          <li className="custom-li"><span style={{fontSize: '1.1rem', marginLeft:'-0.30rem'}}>Systems Engineer</span></li>
-          <li style={{textDecoration: 'none', listStyle: 'none', paddingLeft: '1.2rem', fontStyle: 'italic',}}>San Ignacio de Loyola University</li>
-          <li style={{textDecoration: 'none', listStyle: 'none', paddingLeft: '1.2rem', fontStyle: 'italic'}}>2021 - present</li>
-          <li className="custom-li"><span style={{fontSize: '1.1rem', marginLeft:'-0.30rem'}}>Frontend Developer</span></li>
-          <li style={{textDecoration: 'none', listStyle: 'none', paddingLeft: '1.2rem', fontStyle: 'italic'}}>San Ignacio de Loyola University</li>
-          <li style={{textDecoration: 'none', listStyle: 'none', paddingLeft: '1.2rem', fontStyle: 'italic'}}>2023 - present</li>
+          <Item
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "start",
+              width: "auto",
+            }}
+          >
+            <h2>Education</h2>
+            <li className="custom-li">
+              <span style={{ fontSize: "1.1rem", marginLeft: "-0.30rem" }}>
+                Systems Engineer
+              </span>
+            </li>
+            <li
+              style={{
+                textDecoration: "none",
+                listStyle: "none",
+                paddingLeft: "1.2rem",
+                fontStyle: "italic",
+              }}
+            >
+              San Ignacio de Loyola University
+            </li>
+            <li
+              style={{
+                textDecoration: "none",
+                listStyle: "none",
+                paddingLeft: "1.2rem",
+                fontStyle: "italic",
+              }}
+            >
+              2021 - present
+            </li>
+            <li className="custom-li">
+              <span style={{ fontSize: "1.1rem", marginLeft: "-0.30rem" }}>
+                Frontend Developer
+              </span>
+            </li>
+            <li
+              style={{
+                textDecoration: "none",
+                listStyle: "none",
+                paddingLeft: "1.2rem",
+                fontStyle: "italic",
+              }}
+            >
+              San Ignacio de Loyola University
+            </li>
+            <li
+              style={{
+                textDecoration: "none",
+                listStyle: "none",
+                paddingLeft: "1.2rem",
+                fontStyle: "italic",
+              }}
+            >
+              2023 - present
+            </li>
           </Item>
-          
-          <Item sx={{display: 'flex', flexDirection: 'column', alignItems: 'start', width: 'auto', backgroundColor: 'transparent'}}>
+
+          <Item
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "start",
+              width: "auto",
+              backgroundColor: "transparent",
+            }}
+          >
             <h2>Tech Stack:</h2>
             <Box
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
-                overflow: 'auto',
                 scrollSnapType: "x mandatory",
-                backgroundColor: 'transparent',
+                backgroundColor: "transparent",
                 "& > *": {
                   scrollSnapAlign: "center",
                 },
@@ -117,18 +193,27 @@ export default function About() {
                     justifyContent: "center",
                     alignItems: "center",
                     backgroundColor: "transparent",
-                    border: 'none'
+                    border: 'none',
+                    borderRadius: '1rem',
+                    transition: "transform 0.3s ease-in-out", // Transición suave
+                    "&:hover": {
+                      transform: "scale(1.05)", // Efecto de zoom
+                      backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    },
                   }}
                 >
                   <AspectRatio
+                    variant="plain"
                     objectFit="contain"
-                    sx={{ minWidth: 65, maxHeight: 30, borderRadius: '0'}}
+                    sx={{
+                      minWidth: 65,
+                    }}
                   >
                     <img
                       srcSet={`${item.src}`}
                       src={`${item.src}`}
                       alt={item.title}
-                      style={{backgroundColor: '#061738'}}
+                      style={{ backgroundColor: "transparent"}}
                     />
                   </AspectRatio>
                   <Box sx={{ whiteSpace: "nowrap", mx: 1 }}>

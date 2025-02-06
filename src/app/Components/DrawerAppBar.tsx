@@ -14,7 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
+import "../styles/global.css";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
@@ -54,8 +54,8 @@ export default function DrawerAppBar() {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+      <Typography variant="h6" sx={{ my: 2, fontFamily: '"Pacifico", serif;', fontSize: '1.5rem' }}>
+        Plasencia
       </Typography>
       <Divider />
       <List>
@@ -84,16 +84,22 @@ export default function DrawerAppBar() {
           >
             <MenuIcon />
           </IconButton>
+          
           <Typography
+            className="main-text-navbar"
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block", paddingLeft: '5.1%' } }}
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block", paddingLeft: '5.1%', fontFamily: '"Pacifico", serif;', fontSize: '1.5rem'}}}
           >
             Plasencia
           </Typography>
+
           <Box sx={{ display: { xs: "none", sm: "block", paddingRight: '5.1%' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
+              <Button key={item} sx={{ color: "#fff", fontFamily: '"Lexend Giga", serif', "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      color: "#4E89A5", // Cambia el color del texto al hacer hover
+    }, }}>
                 {item}
               </Button>
             ))}
@@ -106,7 +112,7 @@ export default function DrawerAppBar() {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Mejor rendimiento en dispositivos móviles
+            keepMounted: true, 
           }}
           sx={{
             display: { xs: "block", sm: "none" },
