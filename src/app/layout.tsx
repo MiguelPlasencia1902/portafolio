@@ -3,8 +3,8 @@ import * as React from 'react';
 import { CssBaseline } from '@mui/material';
 import dynamic from 'next/dynamic';
 
-const About = dynamic(() => import('./Components/About'))
-const Drawer = dynamic(() => import('./Components/DrawerAppBar'))
+
+const Navbar = dynamic(() => import('./Components/DrawerAppBar'))
 
 export const metadata: Metadata = {
   title: "Portafolio",
@@ -13,12 +13,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
-      <CssBaseline />
+      
       <body style={{
            margin: 0,
            padding: 0,
@@ -28,14 +30,13 @@ export default function RootLayout({
            flexDirection: "column", // Apilar el contenido (navbar, main, footer)
            backgroundColor: '#061738'
         }}>
+          <CssBaseline />
         {/* Navbar */}
-        <Drawer/>
+        <Navbar/>
         {/* Contenido */}
         <main>
           {children}
-          <About/>
         </main>
-
         {/* footer */}
         <footer>
 

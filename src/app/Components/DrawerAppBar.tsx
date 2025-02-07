@@ -14,16 +14,26 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Link from "next/link";
 import "../styles/global.css";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = ["Home", "About", "Projects", "Contact"];
+
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    console.error(`No se encontró el elemento con ID: ${sectionId}`);
+  }
+};
 
 export default function DrawerAppBar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [bgColor, setBgColor] = React.useState("transparent"); // Estado para el color del fondo
+  const [bgColor, setBgColor] = React.useState("transparent");
   const [bBlock, setbBlock] = React.useState("1px solid");
-  const [bbColor, setbbColor] = React.useState("#4E89A5")
+  const [bbColor, setbbColor] = React.useState("#4E89A5");
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -31,13 +41,11 @@ export default function DrawerAppBar() {
 
   const handleScroll = () => {
     if (typeof window !== "undefined" && window.scrollY > 50) {
-      {/* Estado estatico */}
-      setBgColor("#131d32"); 
+      setBgColor("#131d32");
       setbBlock("1px solid");
       setbbColor("#4E89A5");
     } else {
-      {/* Estado al scrollear */}
-      setBgColor("transparent"); 
+      setBgColor("transparent");
       setbBlock("1px solid");
       setbbColor("#4E89A5");
     }
@@ -47,21 +55,24 @@ export default function DrawerAppBar() {
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", handleScroll);
       return () => {
-        window.removeEventListener("scroll", handleScroll); 
+        window.removeEventListener("scroll", handleScroll);
       };
     }
   }, []);
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2, fontFamily: '"Pacifico", serif;', fontSize: '1.5rem' }}>
+      <Typography
+        variant="h6"
+        sx={{ my: 2, fontFamily: '"Pacifico", serif;', fontSize: "1.5rem" }}
+      >
         Plasencia
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemButton sx={{ textAlign: "center" }} onClick={() => scrollToSection(item.toLowerCase().replace(" ", "-") + "-section")}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
@@ -73,7 +84,14 @@ export default function DrawerAppBar() {
   return (
     <Box position={"absolute"} sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{ backgroundColor: bgColor, borderBottom: bBlock, borderBlockColor: bbColor}}>
+      <AppBar
+        component="nav"
+        sx={{
+          backgroundColor: bgColor,
+          borderBottom: bBlock,
+          borderBlockColor: bbColor,
+        }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -84,22 +102,35 @@ export default function DrawerAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          
+
           <Typography
-            className="main-text-navbar"
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block", paddingLeft: '5.1%', fontFamily: '"Pacifico", serif;', fontSize: '1.5rem'}}}
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "block" },
+              paddingLeft: "5.1%",
+              fontFamily: '"Pacifico", serif;',
+              fontSize: "1.5rem",
+            }}
           >
             Plasencia
           </Typography>
 
-          <Box sx={{ display: { xs: "none", sm: "block", paddingRight: '5.1%' } }}>
+          <Box sx={{ display: { xs: "none", sm: "block" }, paddingRight: "5.1%" }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff", fontFamily: '"Lexend Giga", serif', "&:hover": {
-      backgroundColor: "rgba(255, 255, 255, 0.1)",
-      color: "#4E89A5", // Cambia el color del texto al hacer hover
-    }, }}>
+              <Button
+                key={item}
+                sx={{
+                  color: "#fff",
+                  fontFamily: '"Lexend Giga", serif',
+                  "&:hover": {
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    color: "#4E89A5",
+                  },
+                }}
+                onClick={() => scrollToSection(item.toLowerCase().replace(" ", "-") + "-section")}
+              >
                 {item}
               </Button>
             ))}
@@ -112,11 +143,14 @@ export default function DrawerAppBar() {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, 
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
           }}
         >
           {drawer}
@@ -126,3 +160,4 @@ export default function DrawerAppBar() {
     </Box>
   );
 }
+
