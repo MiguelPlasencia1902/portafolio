@@ -15,6 +15,7 @@ import AspectRatio from "@mui/joy/AspectRatio";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
+import Divider from "@mui/joy/Divider";
 
 const handleScrollToAbout = () => {
   const element = document.getElementById("about-section");
@@ -74,12 +75,12 @@ const ItemsProjects = [
         img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
       },
       {
-        name: "Next.js",
-        img: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
+        name: "Svelte",
+        img: "https://res.cloudinary.com/dfjn83ofc/image/upload/v1738807180/ssss_bbmrjq.png",
       },
       {
         name: "Material-UI",
-        img: "https://mui.com/static/logo.png",
+        img: "https://cdn.worldvectorlogo.com/logos/material-ui-1.svg",
       },
     ],
   },
@@ -95,11 +96,15 @@ const ItemsProjects = [
       },
       {
         name: "Next.js",
-        img: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
+        img: "https://res.cloudinary.com/dfjn83ofc/image/upload/f_png/v1738807180/SS_zwzbzc.png",
+      },
+      {
+        name: "css",
+        img: "https://ultimatecourses.com/assets/category/css-fcba6b473cb1125595dc28163be24eb673907258b5f6f6c82967a0587a9df20c.svg",
       },
       {
         name: "Material-UI",
-        img: "https://mui.com/static/logo.png",
+        img: "https://cdn.worldvectorlogo.com/logos/material-ui-1.svg",
       },
     ],
   },
@@ -115,11 +120,51 @@ const ItemsProjects = [
       },
       {
         name: "Next.js",
-        img: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png",
       },
       {
         name: "Material-UI",
-        img: "https://mui.com/static/logo.png",
+        img: "https://cdn.worldvectorlogo.com/logos/material-ui-1.svg",
+      },
+    ],
+  },
+  {
+    id: 4,
+    src: "https://us-wd.gr-cdn.com/blog/sites/5/2023/07/2007/ejemplo_pagina_web_turismo_y_viajes-1-1536x732-3.webp",
+    title: "Sitio Web Champlain",
+    create_date: "15 de enero, 2025",
+    technologies: [
+      {
+        name: "React",
+        img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+      },
+      {
+        name: "Next.js",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png",
+      },
+      {
+        name: "Material-UI",
+        img: "https://cdn.worldvectorlogo.com/logos/material-ui-1.svg",
+      },
+    ],
+  },
+  {
+    id: 5,
+    src: "https://us-wd.gr-cdn.com/blog/sites/5/2023/07/2007/ejemplo_pagina_web_turismo_y_viajes-1-1536x732-3.webp",
+    title: "Sitio Web Champlain",
+    create_date: "15 de enero, 2025",
+    technologies: [
+      {
+        name: "React",
+        img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+      },
+      {
+        name: "Next.js",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png",
+      },
+      {
+        name: "Material-UI",
+        img: "https://cdn.worldvectorlogo.com/logos/material-ui-1.svg",
       },
     ],
   },
@@ -215,13 +260,15 @@ export default function Home() {
         </Container>
       </Box>
 
+      <Divider orientation="horizontal" />
+
       {/* About */}
       <Box id="about-section" sx={{ width: "100%" }}>
         <Stack
           spacing={2}
           direction={{ xs: "column", sm: "row" }}
           useFlexGap
-          sx={{ flexWrap: "wrap", padding: "5%", paddingBottom: 0 }}
+          sx={{ flexWrap: "wrap", padding: "5%" }}
         >
           <Item
             sx={{
@@ -375,8 +422,19 @@ export default function Home() {
         </Stack>
       </Box>
 
+      <Divider orientation="horizontal" />
+
       {/* Projects */}
-      <Box id="projects-section" sx={{ width: "100%" }}>
+      <Box
+        id="projects-section"
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#050F21",
+        }}
+      >
         <Stack
           spacing={2}
           direction={{ xs: "column", sm: "row" }}
@@ -387,7 +445,8 @@ export default function Home() {
             sx={{
               display: "flex",
               flexDirection: "column",
-              alignItems: "start",
+              alignItems: "center",
+              justifyContent: "center",
               width: "100%",
               backgroundColor: "transparent",
             }}
@@ -399,10 +458,6 @@ export default function Home() {
                 flexWrap: "wrap",
                 scrollSnapType: "x mandatory",
                 backgroundColor: "transparent",
-                "& > *": {
-                  scrollSnapAlign: "center",
-                },
-                "::-webkit-scrollbar": { display: "none" },
               }}
             >
               {ItemsProjects.map((item) => (
@@ -412,7 +467,13 @@ export default function Home() {
                   sx={{
                     width: 320,
                     margin: "2rem",
-                    backgroundColor: "#133255",
+                    backgroundColor: "transparent",
+                    boxShadow: '4px 6px 5px 0px rgba(0,0,0,1)',
+                    transition: "transform 0.3s ease-in-out", // Transición suave
+                    "&:hover": {
+                      transform: "scale(1.05)", // Efecto de zoom
+                      backgroundColor: "rgba(6, 23, 56, 1)",
+                    },
                   }}
                 >
                   <div>
@@ -532,6 +593,10 @@ export default function Home() {
           </Item>
         </Stack>
       </Box>
+
+      <Divider orientation="horizontal" />
+
+      {/* Contact */}
     </Container>
   );
 }
