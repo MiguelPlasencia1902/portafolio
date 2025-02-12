@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import EmailIcon from "@mui/icons-material/Email";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -16,6 +17,14 @@ import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
 import Divider from "@mui/joy/Divider";
+import FmdGoodIcon from "@mui/icons-material/FmdGood";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import { filledInputClasses } from "@mui/material/FilledInput";
+import { inputBaseClasses } from "@mui/material/InputBase";
+import { FormControl } from "@mui/material";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import FormHelperText from "@mui/material/FormHelperText";
 
 const handleScrollToAbout = () => {
   const element = document.getElementById("about-section");
@@ -185,6 +194,7 @@ export default function Home() {
   return (
     <Container maxWidth={false} disableGutters={true}>
       <CssBaseline />
+
       {/* Presentation */}
       <Box
         id="home-section"
@@ -468,7 +478,7 @@ export default function Home() {
                     width: 320,
                     margin: "2rem",
                     backgroundColor: "transparent",
-                    boxShadow: '4px 6px 5px 0px rgba(0,0,0,1)',
+                    boxShadow: "4px 6px 5px 0px rgba(0,0,0,1)",
                     transition: "transform 0.3s ease-in-out", // Transición suave
                     "&:hover": {
                       transform: "scale(1.05)", // Efecto de zoom
@@ -597,6 +607,168 @@ export default function Home() {
       <Divider orientation="horizontal" />
 
       {/* Contact */}
+      <Box
+      id="contact-section"
+      sx={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "transparent",
+        py: 4,
+        px: 2,
+      }}
+    >
+      <Container maxWidth="md">
+        <Grid container spacing={4} alignItems="center">
+          <Grid item xs={12} md={6}>
+            <Box>
+              <h2 style={{ color: "white" }}>Contact me</h2>
+              <span
+                style={{
+                  color: "white",
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                <EmailIcon fontSize="small" sx={{ marginRight: "0.5rem" }} />
+                miguelplasencia1902@gmail.com
+              </span>
+              <span
+                style={{
+                  color: "white",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <FmdGoodIcon fontSize="small" sx={{ marginRight: "0.5rem" }} />
+                Lima - Peru
+              </span>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box
+              component="form"
+              action="https://formspree.io/f/tu-endpoint"
+              method="POST"
+              sx={{
+                p: 3,
+                borderRadius: 2,
+                backgroundColor: "#040D1A",
+              }}
+            >
+              <TextField
+                label="Tu Correo"
+                name="email"
+                type="email"
+                fullWidth
+                required
+                margin="normal"
+                InputProps={{
+                  style: {
+                    color: "#fff",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: "#A6AFBA",
+                  },
+                }}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "#051431",
+                    "& fieldset": {
+                      borderColor: "#4E89A5",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#4E89A5",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#4E89A5",
+                    },
+                  },
+                  "& input:-webkit-autofill": {
+                    WebkitBoxShadow:
+                      "0 0 0 1000px rgba(255, 255, 255, 0.1) inset",
+                    WebkitTextFillColor: "#fff",
+                    transition: "background-color 5000s ease-in-out 0s",
+                  },
+                }}
+              />
+              <TextField
+                label="Asunto"
+                name="subject"
+                type="text"
+                fullWidth
+                required
+                margin="normal"
+                InputProps={{
+                  style: {
+                    color: "#fff",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: "#A6AFBA",
+                  },
+                }}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "#051431",
+                    "& fieldset": {
+                      borderColor: "#4E89A5",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#4E89A5",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#4E89A5",
+                    },
+                  },
+                }}
+              />
+              <TextField
+                label="Mensaje"
+                name="message"
+                multiline
+                rows={4}
+                fullWidth
+                required
+                margin="normal"
+                InputProps={{
+                  style: {
+                    color: "#fff",
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: "#A6AFBA",
+                  },
+                }}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "#051431",
+                    "& fieldset": {
+                      borderColor: "#4E89A5",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#4E89A5",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#4E89A5",
+                    },
+                  },
+                }}
+              />
+              <Button type="submit" fullWidth sx={{ mt: 2 }}>
+                Enviar
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
     </Container>
   );
 }
