@@ -234,11 +234,11 @@ export default function Home() {
                   src="https://images.pexels.com/photos/516927/pexels-photo-516927.jpeg?cs=srgb&dl=pexels-pripicart-516927.jpg&fm=jpg"
                   alt="Profile"
                   sx={{
-                    width: 150, // Tamaño más grande
+                    width: 150, 
                     height: 150,
-                    borderRadius: "50%", // Hace la imagen circular
-                    objectFit: "cover", // Ajusta la imagen dentro del círculo sin deformarla
-                    boxShadow: 3, // Agrega una pequeña sombra
+                    borderRadius: "50%", 
+                    objectFit: "cover", 
+                    boxShadow: 3, 
                   }}
                 />
               </Grid>
@@ -246,7 +246,7 @@ export default function Home() {
 
             {/* Texto */}
             <Grid item>
-              <h2>Hi, I'm Miguel 👋</h2>
+              <h2>{"Hi, I'm Miguel 👋"}</h2>
               <h1>Frontend Developer</h1>
               <h2>That loves creating web apps</h2>
             </Grid>
@@ -554,6 +554,7 @@ export default function Home() {
                         {Array.isArray(item.technologies) &&
                           item.technologies.map((tech) => (
                             <Card
+                              key={tech.name}
                               orientation="vertical"
                               size="sm"
                               sx={{
