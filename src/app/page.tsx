@@ -19,12 +19,6 @@ import Typography from "@mui/joy/Typography";
 import Divider from "@mui/joy/Divider";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import { filledInputClasses } from "@mui/material/FilledInput";
-import { inputBaseClasses } from "@mui/material/InputBase";
-import { FormControl } from "@mui/material";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import FormHelperText from "@mui/material/FormHelperText";
 
 const handleScrollToAbout = () => {
   const element = document.getElementById("about-section");
