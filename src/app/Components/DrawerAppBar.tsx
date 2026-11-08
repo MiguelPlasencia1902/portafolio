@@ -1,162 +1,72 @@
-"use client";
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import "../styles/global.css";
+﻿"use client";
+import { useEffect, useRef, useState } from "react";
+import { Arrow } from "./Icons";
 
-const drawerWidth = 240;
-const navItems = ["Home", "About", "Projects", "Contact"];
-
-const scrollToSection = (sectionId: string) => {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
-  } else {
-    console.error(`No se encontró el elemento con ID: ${sectionId}`);
-  }
-};
-
+const links = [
+  { href: "#servicios", label: "Servicios" },
+  { href: "#proyectos", label: "Proyectos" },
+  { href: "#sobre-mi", label: "Sobre mí" },
+  { href: "#habilidades", label: "Habilidades" },
+];
 export default function DrawerAppBar() {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [bgColor, setBgColor] = React.useState("transparent");
-  const [bBlock, setbBlock] = React.useState("1px solid");
-  const [bbColor, setbbColor] = React.useState("#4E89A5");
-
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
-
-  const handleScroll = () => {
-    if (typeof window !== "undefined" && window.scrollY > 50) {
-      setBgColor("#131d32");
-      setbBlock("1px solid");
-      setbbColor("#4E89A5");
-    } else {
-      setBgColor("transparent");
-      setbBlock("1px solid");
-      setbbColor("#4E89A5");
-    }
-  };
-
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", handleScroll);
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
+  const [open, setOpen] = useState(false);
+  const button = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        button.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
   }, []);
-
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography
-        variant="h6"
-        sx={{ my: 2, fontFamily: '"Pacifico", serif;', fontSize: "1.5rem" }}
-      >
-        Plasencia
-      </Typography>
-      <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }} onClick={() => scrollToSection(item.toLowerCase().replace(" ", "-") + "-section")}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
-    <Box position={"absolute"} sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-        component="nav"
-        sx={{
-          backgroundColor: bgColor,
-          borderBottom: bBlock,
-          borderBlockColor: bbColor,
-        }}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", sm: "block" },
-              paddingLeft: "5.1%",
-              fontFamily: '"Pacifico", serif;',
-              fontSize: "1.5rem",
-            }}
-          >
-            Plasencia
-          </Typography>
-
-          <Box sx={{ display: { xs: "none", sm: "block" }, paddingRight: "5.1%" }}>
-            {navItems.map((item) => (
-              <Button
-                key={item}
-                sx={{
-                  color: "#fff",
-                  fontFamily: '"Lexend Giga", serif',
-                  "&:hover": {
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
-                    color: "#4E89A5",
-                  },
-                }}
-                onClick={() => scrollToSection(item.toLowerCase().replace(" ", "-") + "-section")}
-              >
-                {item}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <nav>
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
+    <header className="site-header">
+      <div className="section-shell nav-inner">
+        <a
+          className="wordmark"
+          href="#inicio"
+          aria-label="Miguel Plasencia, inicio"
         >
-          {drawer}
-        </Drawer>
-      </nav>
-      <Toolbar />
-    </Box>
+          <span className="monogram">
+            mp<span>.</span>
+          </span>
+          <span>
+            Miguel Plasencia
+            <span className="wordmark-sub">DESARROLLO WEB Y DATOS</span>
+          </span>
+        </a>
+        <button
+          className="menu-toggle"
+          type="button"
+          ref={button}
+          aria-expanded={open}
+          aria-controls="main-nav"
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? "Cerrar ✕" : "Menú ☰"}
+        </button>
+        <nav
+          id="main-nav"
+          aria-label="Navegación principal"
+          className={open ? "nav-links is-open" : "nav-links"}
+        >
+          {links.map((link) => (
+            <a href={link.href} key={link.href} onClick={() => setOpen(false)}>
+              {link.label}
+            </a>
+          ))}
+          <a
+            className="nav-contact"
+            href="#contacto"
+            onClick={() => setOpen(false)}
+          >
+            Hablemos <Arrow />
+          </a>
+        </nav>
+      </div>
+    </header>
   );
 }
-

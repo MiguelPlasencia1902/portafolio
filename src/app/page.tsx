@@ -1,769 +1,331 @@
-"use client";
-import * as React from "react";
-import EmailIcon from "@mui/icons-material/Email";
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import "./styles/global.css";
-import Button from "@mui/joy/Button";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import Zoom from "@mui/material/Zoom";
-import Stack from "@mui/joy/Stack";
-import Sheet from "@mui/joy/Sheet";
-import { styled } from "@mui/joy/styles";
-import AspectRatio from "@mui/joy/AspectRatio";
-import Card from "@mui/joy/Card";
-import CardContent from "@mui/joy/CardContent";
-import Typography from "@mui/joy/Typography";
-import Divider from "@mui/joy/Divider";
-import FmdGoodIcon from "@mui/icons-material/FmdGood";
-import TextField from "@mui/material/TextField";
-
-const handleScrollToAbout = () => {
-  const element = document.getElementById("about-section");
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
-const data = [
-  {
-    src: "https://res.cloudinary.com/dfjn83ofc/image/upload/f_png/v1738807180/SS_zwzbzc.png",
-    title: "HTML",
-  },
-  {
-    src: "https://ultimatecourses.com/assets/category/css-fcba6b473cb1125595dc28163be24eb673907258b5f6f6c82967a0587a9df20c.svg",
-    title: "CSS",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/640px-Unofficial_JavaScript_logo_2.svg.png",
-    title: "JavaScript",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/1200px-React.svg.png",
-    title: "React",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png",
-    title: "Tailwind",
-  },
-  {
-    src: "https://avatars.githubusercontent.com/u/18133?s=280&v=4",
-    title: "Git",
-  },
-  {
-    src: "https://res.cloudinary.com/dfjn83ofc/image/upload/v1738807180/Gato_kfqtvx.png",
-    title: "GitHub",
-  },
-  {
-    src: "https://res.cloudinary.com/dfjn83ofc/image/upload/v1738807180/ssss_bbmrjq.png",
-    title: "Svelte",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png",
-    title: "PostgreSQL",
-  },
-];
-
-const ItemsProjects = [
-  {
-    id: 1,
-    src: "https://www.ecommercenews.pe/wp-content/uploads/2021/05/WhatsApp-Image-2021-05-05-at-3.41.14-PM-1280x720.jpeg",
-    title: "Tipos de páginas",
-    create_date: "7 de Febrero, 2025",
-    technologies: [
-      {
-        name: "React",
-        img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-      },
-      {
-        name: "Svelte",
-        img: "https://res.cloudinary.com/dfjn83ofc/image/upload/v1738807180/ssss_bbmrjq.png",
-      },
-      {
-        name: "Material-UI",
-        img: "https://cdn.worldvectorlogo.com/logos/material-ui-1.svg",
-      },
-    ],
-  },
-  {
-    id: 2,
-    src: "https://us-wd.gr-cdn.com/blog/sites/5/2023/07/2012/ejemplo_pagina_web_eventos-1-1536x720-1.webp",
-    title: "Sitio Web Femergy",
-    create_date: "15 de Febrero, 2025",
-    technologies: [
-      {
-        name: "React",
-        img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-      },
-      {
-        name: "Next.js",
-        img: "https://res.cloudinary.com/dfjn83ofc/image/upload/f_png/v1738807180/SS_zwzbzc.png",
-      },
-      {
-        name: "css",
-        img: "https://ultimatecourses.com/assets/category/css-fcba6b473cb1125595dc28163be24eb673907258b5f6f6c82967a0587a9df20c.svg",
-      },
-      {
-        name: "Material-UI",
-        img: "https://cdn.worldvectorlogo.com/logos/material-ui-1.svg",
-      },
-    ],
-  },
-  {
-    id: 3,
-    src: "https://us-wd.gr-cdn.com/blog/sites/5/2023/07/2007/ejemplo_pagina_web_turismo_y_viajes-1-1536x732-3.webp",
-    title: "Sitio Web Champlain",
-    create_date: "15 de enero, 2025",
-    technologies: [
-      {
-        name: "React",
-        img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-      },
-      {
-        name: "Next.js",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png",
-      },
-      {
-        name: "Material-UI",
-        img: "https://cdn.worldvectorlogo.com/logos/material-ui-1.svg",
-      },
-    ],
-  },
-  {
-    id: 4,
-    src: "https://us-wd.gr-cdn.com/blog/sites/5/2023/07/2007/ejemplo_pagina_web_turismo_y_viajes-1-1536x732-3.webp",
-    title: "Sitio Web Champlain",
-    create_date: "15 de enero, 2025",
-    technologies: [
-      {
-        name: "React",
-        img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-      },
-      {
-        name: "Next.js",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png",
-      },
-      {
-        name: "Material-UI",
-        img: "https://cdn.worldvectorlogo.com/logos/material-ui-1.svg",
-      },
-    ],
-  },
-  {
-    id: 5,
-    src: "https://us-wd.gr-cdn.com/blog/sites/5/2023/07/2007/ejemplo_pagina_web_turismo_y_viajes-1-1536x732-3.webp",
-    title: "Sitio Web Champlain",
-    create_date: "15 de enero, 2025",
-    technologies: [
-      {
-        name: "React",
-        img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-      },
-      {
-        name: "Next.js",
-        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png",
-      },
-      {
-        name: "Material-UI",
-        img: "https://cdn.worldvectorlogo.com/logos/material-ui-1.svg",
-      },
-    ],
-  },
-];
-
-const Item = styled(Sheet)(({ theme }) => ({
-  ...theme.typography["body-sm"],
-  textAlign: "center",
-  fontWeight: theme.fontWeight.md,
-  color: "white",
-  padding: theme.spacing(2),
-  borderRadius: theme.radius.md,
-  flexGrow: 1,
-  background: "transparent",
-}));
+﻿import Image from "next/image";
+import { Arrow, Icon } from "./Components/Icons";
+import { Projects } from "./Components/Projects";
+import { contact, services, skills } from "./content";
 
 export default function Home() {
   return (
-    <Container maxWidth={false} disableGutters={true}>
-      <CssBaseline />
-
-      {/* Presentation */}
-      <Box
-        id="home-section"
-        component="section"
-        sx={{
-          bgcolor: "#cfe8fc",
-          height: "100vh",
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
+    <>
+      <section
+        className="hero section-shell"
+        id="inicio"
+        aria-labelledby="hero-title"
       >
-        <Container
-          className="container-text-logo-presentation"
-          maxWidth={false}
-          sx={{
-            width: "100%",
-            height: "100%",
-            bgcolor: "#050F21",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Grid
-            container
-            direction="column"
-            spacing={2}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              textAlign: "center",
-            }}
-          >
-            {/* Imagen circular*/}
-            <Zoom in={true} style={{ transitionDelay: true ? "100ms" : "0ms" }}>
-              <Grid item>
-                <Box
-                  component="img"
-                  src="https://images.pexels.com/photos/516927/pexels-photo-516927.jpeg?cs=srgb&dl=pexels-pripicart-516927.jpg&fm=jpg"
-                  alt="Profile"
-                  sx={{
-                    width: 150, 
-                    height: 150,
-                    borderRadius: "50%", 
-                    objectFit: "cover", 
-                    boxShadow: 3, 
-                  }}
-                />
-              </Grid>
-            </Zoom>
-
-            {/* Texto */}
-            <Grid item>
-              <h2>{"Hi, I'm Miguel 👋"}</h2>
-              <h1>Frontend Developer</h1>
-              <h2>That loves creating web apps</h2>
-            </Grid>
-            {/* Boton */}
-            <Grid item>
-              <Button
-                sx={{ fontSize: 20, color: "white", background: "#4675F5" }}
-                endDecorator={<ArrowForwardIcon />}
-                onClick={handleScrollToAbout}
-              >
-                Comenzar
-              </Button>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-
-      <Divider orientation="horizontal" />
-
-      {/* About */}
-      <Box id="about-section" sx={{ width: "100%" }}>
-        <Stack
-          spacing={2}
-          direction={{ xs: "column", sm: "row" }}
-          useFlexGap
-          sx={{ flexWrap: "wrap", padding: "5%" }}
-        >
-          <Item
-            sx={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "start",
-            }}
-          >
-            <h2>About</h2>
+        <div className="hero-copy">
+          <span className="availability">
+            <span /> Disponible para proyectos freelance
+          </span>
+          <p className="eyebrow hero-name">HOLA, SOY MIGUEL PLASENCIA</p>
+          <h1 id="hero-title">
+            Desarrollo web.
             <br />
-            <span
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                textAlign: "left",
-              }}
-            >
-              ¡Hola! 👋 Soy un estudiante de Ingeniería de Sistemas apasionado
-              por el desarrollo web y la tecnología. Me encanta aprender y
-              explorar nuevas herramientas para crear soluciones eficientes e
-              innovadoras.
-            </span>
-          </Item>
-          <Item
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "start",
-              width: "auto",
-            }}
-          >
-            <h2>Education</h2>
-            <li className="custom-li">
-              <span style={{ fontSize: "1.1rem", marginLeft: "-0.30rem" }}>
-                Systems Engineer
-              </span>
-            </li>
-            <li
-              style={{
-                textDecoration: "none",
-                listStyle: "none",
-                paddingLeft: "1.2rem",
-                fontStyle: "italic",
-              }}
-            >
-              San Ignacio de Loyola University
-            </li>
-            <li
-              style={{
-                textDecoration: "none",
-                listStyle: "none",
-                paddingLeft: "1.2rem",
-                fontStyle: "italic",
-              }}
-            >
-              2021 - present
-            </li>
-            <li className="custom-li">
-              <span style={{ fontSize: "1.1rem", marginLeft: "-0.30rem" }}>
-                Frontend Developer
-              </span>
-            </li>
-            <li
-              style={{
-                textDecoration: "none",
-                listStyle: "none",
-                paddingLeft: "1.2rem",
-                fontStyle: "italic",
-              }}
-            >
-              San Ignacio de Loyola University
-            </li>
-            <li
-              style={{
-                textDecoration: "none",
-                listStyle: "none",
-                paddingLeft: "1.2rem",
-                fontStyle: "italic",
-              }}
-            >
-              2023 - present
-            </li>
-          </Item>
-
-          <Item
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "start",
-              width: "auto",
-              backgroundColor: "transparent",
-            }}
-          >
-            <h2 style={{ paddingBottom: "1.5rem" }}>Tech Stack:</h2>
-            <Box
-              sx={{
-                display: "flex",
-                flexWrap: "wrap",
-                scrollSnapType: "x mandatory",
-                backgroundColor: "transparent",
-                "& > *": {
-                  scrollSnapAlign: "center",
-                },
-                "::-webkit-scrollbar": { display: "none" },
-              }}
-            >
-              {data.map((item, index) => (
-                <Card
-                  orientation="vertical"
-                  size="sm"
-                  key={index}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "transparent",
-                    border: "none",
-                    borderRadius: "1rem",
-                    transition: "transform 0.3s ease-in-out", // Transición suave
-                    "&:hover": {
-                      transform: "scale(1.05)", // Efecto de zoom
-                      backgroundColor: "rgba(255, 255, 255, 0.03)",
-                    },
-                  }}
-                >
-                  <AspectRatio
-                    variant="plain"
-                    objectFit="contain"
-                    sx={{
-                      minWidth: 65,
-                    }}
-                  >
-                    <img
-                      srcSet={`${item.src}`}
-                      src={`${item.src}`}
-                      alt={item.title}
-                      style={{ backgroundColor: "transparent" }}
-                    />
-                  </AspectRatio>
-                  <Box sx={{ whiteSpace: "nowrap", mx: 1 }}>
-                    <Typography sx={{ color: "white" }} level="title-md">
-                      {item.title}
-                    </Typography>
-                  </Box>
-                </Card>
-              ))}
-            </Box>
-          </Item>
-        </Stack>
-      </Box>
-
-      <Divider orientation="horizontal" />
-
-      {/* Projects */}
-      <Box
-        id="projects-section"
-        sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#050F21",
-        }}
+            <span>Datos en orden.</span>
+            <br />
+            Soluciones prácticas.
+          </h1>
+          <p className="hero-role">
+            Desarrollador web <span>·</span> Python <span>·</span> SQL
+          </p>
+          <p className="hero-description">
+            Te ayudo a crear tu presencia web, organizar tus datos y automatizar
+            tareas. Construyo experiencia con proyectos reales, colaboraciones y
+            soluciones que puedes usar.
+          </p>
+          <div className="actions">
+            <a className="button primary" href="#proyectos">
+              Ver proyectos <Arrow />
+            </a>
+            <a className="button secondary" href={contact.cv} download>
+              <Icon name="download" /> Descargar CV
+            </a>
+            <a className="text-link" href="#contacto">
+              Hablemos <Arrow />
+            </a>
+          </div>
+          <div className="hero-location">
+            <Icon name="location" /> En Italia · Trabajo remoto en español
+          </div>
+        </div>
+        <div className="hero-visual">
+          <div className="portrait-frame">
+            <Image
+              src="/images/miguel-plasencia.jpeg"
+              alt="Miguel Plasencia, desarrollador web y estudiante de Ingeniería de Sistemas"
+              width={1254}
+              height={1254}
+              priority
+              sizes="(max-width: 760px) 85vw, 420px"
+            />
+            <div className="portrait-caption">
+              <span>Miguel Plasencia</span>
+              <span>Web, Python y datos</span>
+            </div>
+          </div>
+          <div className="portrait-tag">
+            <span className="code-mark">&lt;/&gt;</span>
+            <div>
+              De una necesidad concreta<span>a una solución funcional.</span>
+            </div>
+          </div>
+          <span className="portrait-coordinate" aria-hidden="true">
+            CONSTRUIR · ORGANIZAR · SIMPLIFICAR
+          </span>
+        </div>
+      </section>
+      <div className="specialties">
+        <div className="section-shell">
+          <span>Un enfoque práctico</span>
+          <p>
+            Desarrollo web <b>✦</b> Python y automatización <b>✦</b> SQL y
+            análisis de datos
+          </p>
+        </div>
+      </div>
+      <section
+        className="section-shell section"
+        id="servicios"
+        aria-labelledby="services-title"
       >
-        <Stack
-          spacing={2}
-          direction={{ xs: "column", sm: "row" }}
-          useFlexGap
-          sx={{ flexWrap: "wrap", padding: "5%" }}
-        >
-          <Item
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "100%",
-              backgroundColor: "transparent",
-            }}
-          >
-            <h2>Projects</h2>
-            <Box
-              sx={{
-                display: "flex",
-                flexWrap: "wrap",
-                scrollSnapType: "x mandatory",
-                backgroundColor: "transparent",
-              }}
-            >
-              {ItemsProjects.map((item) => (
-                <Card
-                  key={item.id}
-                  variant="soft"
-                  sx={{
-                    width: 320,
-                    margin: "2rem",
-                    backgroundColor: "transparent",
-                    boxShadow: "4px 6px 5px 0px rgba(0,0,0,1)",
-                    transition: "transform 0.3s ease-in-out", // Transición suave
-                    "&:hover": {
-                      transform: "scale(1.05)", // Efecto de zoom
-                      backgroundColor: "rgba(6, 23, 56, 1)",
-                    },
-                  }}
-                >
-                  <div>
-                    <Typography
-                      sx={{
-                        color: "white",
-                        fontFamily: '"Lexend Giga", serif',
-                      }}
-                      level="title-lg"
-                    >
-                      {item.title}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: "white",
-                        fontFamily: '"Lexend Giga", serif',
-                      }}
-                      level="title-sm"
-                    >
-                      {item.create_date}
-                    </Typography>
-                  </div>
-                  <AspectRatio
-                    variant="plain"
-                    minHeight="120px"
-                    maxHeight="200px"
-                  >
-                    <img
-                      srcSet={`${item.src}`}
-                      src={`${item.src}`}
-                      alt={item.title}
-                      style={{ backgroundColor: "transparent" }}
-                    />
-                  </AspectRatio>
-                  <CardContent
-                    orientation="horizontal"
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "start",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "start",
-                        margin: "0.5rem",
-                        marginLeft: "0",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "white",
-                          fontFamily: '"Lexend Giga", serif',
-                        }}
-                        level="title-sm"
-                      >
-                        Technologies:
-                      </Typography>
-
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexWrap: "wrap",
-                          scrollSnapType: "x mandatory",
-                          backgroundColor: "transparent",
-                          "& > *": {
-                            scrollSnapAlign: "center",
-                          },
-                          "::-webkit-scrollbar": { display: "none" },
-                        }}
-                      >
-                        {Array.isArray(item.technologies) &&
-                          item.technologies.map((tech) => (
-                            <Card
-                              key={tech.name}
-                              orientation="vertical"
-                              size="sm"
-                              sx={{
-                                width: "3rem",
-                                display: "flex",
-                                margin: "0.2rem",
-                                marginTop: "0.5rem",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                backgroundColor: "transparent",
-                                border: "none",
-                                borderRadius: "1rem",
-                                transition: "transform 0.3s ease-in-out", // Transición suave
-                                "&:hover": {
-                                  transform: "scale(1.05)", // Efecto de zoom
-                                  backgroundColor: "rgba(255, 255, 255, 0.03)",
-                                },
-                              }}
-                            >
-                              <AspectRatio
-                                variant="plain"
-                                objectFit="contain"
-                                sx={{
-                                  minWidth: 40,
-                                }}
-                              >
-                                <img
-                                  srcSet={`${tech.img}`}
-                                  alt={tech.name}
-                                  style={{ backgroundColor: "transparent" }}
-                                />
-                              </AspectRatio>
-                            </Card>
-                          ))}
-                      </Box>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </Box>
-          </Item>
-        </Stack>
-      </Box>
-
-      <Divider orientation="horizontal" />
-
-      {/* Contact */}
-      <Box
-      id="contact-section"
-      sx={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "transparent",
-        py: 4,
-        px: 2,
-      }}
-    >
-      <Container maxWidth="md">
-        <Grid container spacing={4} alignItems="center">
-          <Grid item xs={12} md={6}>
-            <Box>
-              <h2 style={{ color: "white" }}>Contact me</h2>
-              <span
-                style={{
-                  color: "white",
-                  display: "flex",
-                  alignItems: "center",
-                  marginBottom: "0.5rem",
-                }}
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">01 / EN QUÉ PUEDO AYUDARTE</p>
+            <h2 id="services-title">
+              Menos tareas pendientes.
+              <br />
+              <span>Más soluciones.</span>
+            </h2>
+          </div>
+          <p>
+            Encargos con un alcance definido, comunicación directa y entregables
+            que puedas revisar.
+          </p>
+        </div>
+        <div className="services-grid">
+          {services.map((service, index) => (
+            <article className="service-card" key={service.title}>
+              <div className="card-top">
+                <Icon name={service.icon} />
+                <span>0{index + 1}</span>
+              </div>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <div className="service-delivery">
+                <span>QUÉ TE LLEVAS</span>
+                {service.delivery}
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="section-note">
+          ¿Necesitas soporte en una web pequeña? También puedo ayudarte a
+          ajustar interfaces, corregir estilos e incorporar secciones.{" "}
+          <a href="#contacto">
+            Cuéntame qué necesitas <Arrow />
+          </a>
+        </p>
+      </section>
+      <section
+        className="projects-section"
+        id="proyectos"
+        aria-labelledby="projects-title"
+      >
+        <div className="section-shell section">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">02 / TRABAJO EN PRÁCTICA</p>
+              <h2 id="projects-title">
+                Proyectos con <span>contexto.</span>
+              </h2>
+            </div>
+            <p>
+              Una selección de desarrollo web, trabajo con datos y exploraciones
+              personales. Este es el alcance de mi participación.
+            </p>
+          </div>
+          <Projects />
+        </div>
+      </section>
+      <section
+        className="section-shell section about-grid"
+        id="sobre-mi"
+        aria-labelledby="about-title"
+      >
+        <div>
+          <p className="eyebrow">03 / DETRÁS DEL CÓDIGO</p>
+          <h2 id="about-title">
+            Estoy construyendo
+            <br />
+            <span>mi trayectoria.</span>
+          </h2>
+          <p className="about-lead">
+            Soy Miguel, estudiante de Ingeniería de Sistemas en la Universidad
+            San Ignacio de Loyola.
+          </p>
+          <p>
+            Me enfoco en desarrollo web, Python, SQL y automatización. He
+            participado en proyectos académicos y colaboraciones prácticas:
+            desde interfaces para gestionar información hasta limpieza de datos
+            y migraciones de bases de datos.
+          </p>
+          <p>
+            Estoy iniciando mi recorrido profesional como freelance. Busco
+            encargos en los que pueda aportar con lo que ya sé hacer, acordar un
+            alcance realista y entregar una solución funcional.
+          </p>
+          <a className="text-link" href={contact.cv} download>
+            Conoce mi perfil completo <Icon name="download" />
+          </a>
+        </div>
+        <aside className="approach">
+          <span className="eyebrow">ASÍ ME GUSTA TRABAJAR</span>
+          {[
+            {
+              n: "01",
+              title: "Entender antes de construir",
+              text: "Revisamos tu necesidad, los archivos o la web actual y el resultado que esperas.",
+            },
+            {
+              n: "02",
+              title: "Acordar un alcance claro",
+              text: "Definimos tareas, entregables y una forma sencilla de revisar los avances.",
+            },
+            {
+              n: "03",
+              title: "Entregar algo que puedas usar",
+              text: "Compartimos el resultado, revisamos los detalles y explico cómo utilizarlo.",
+            },
+          ].map((item) => (
+            <div className="approach-step" key={item.n}>
+              <span>{item.n}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </aside>
+      </section>
+      <section
+        className="section-shell section skills-section"
+        id="habilidades"
+        aria-labelledby="skills-title"
+      >
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">04 / HERRAMIENTAS DE TRABAJO</p>
+            <h2 id="skills-title">
+              La tecnología, <span>con propósito.</span>
+            </h2>
+          </div>
+          <p>
+            Conocimientos aplicados en mis proyectos. Elijo las herramientas
+            según la tarea y su alcance.
+          </p>
+        </div>
+        <div className="skills-grid">
+          {skills.map((group) => (
+            <article className="skill-card" key={group.title}>
+              <Icon name={group.icon} />
+              <h3>{group.title}</h3>
+              <div className="tags">
+                {group.items.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+              <p>{group.note}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section
+        className="section-shell section journey-section"
+        id="trayectoria"
+        aria-labelledby="journey-title"
+      >
+        <div>
+          <p className="eyebrow">05 / FORMACIÓN Y PARTICIPACIÓN</p>
+          <h2 id="journey-title">
+            Aprender.
+            <br />
+            Aplicar. <span>Construir.</span>
+          </h2>
+        </div>
+        <div className="timeline">
+          <article>
+            <span className="timeline-label">FORMACIÓN EN CURSO</span>
+            <h3>Ingeniería de Sistemas · USIL</h3>
+            <p>
+              Estudios universitarios en progreso. Formación que complemento con
+              proyectos de desarrollo web y tratamiento de datos.
+            </p>
+          </article>
+          <article>
+            <span className="timeline-label">COLABORACIÓN PRÁCTICA</span>
+            <h3>Interfaces y bases de datos</h3>
+            <p>
+              Participación en Ciavolella y DBFront, junto con experiencia
+              práctica en migración de datos y relaciones de Access a PostgreSQL
+              en un entorno Django.
+            </p>
+          </article>
+          <article>
+            <span className="timeline-label">ACTUALMENTE</span>
+            <h3>Primeros encargos freelance</h3>
+            <p>
+              Disponible para proyectos remotos de desarrollo web, limpieza de
+              datos, consultas SQL y automatizaciones sencillas con Python.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section
+        className="section-shell contact-section"
+        id="contacto"
+        aria-labelledby="contact-title"
+      >
+        <div className="contact-panel">
+          <div>
+            <p className="eyebrow">06 / HABLEMOS DE TU PROYECTO</p>
+            <h2 id="contact-title">
+              ¿Qué necesitas
+              <br />
+              <span>resolver?</span>
+            </h2>
+            <p>
+              Cuéntame qué quieres hacer, qué tienes ahora y para cuándo lo
+              necesitas. Podemos empezar por una tarea concreta.
+            </p>
+            <a className="button primary" href={contact.mailto}>
+              Escríbeme por correo <Arrow />
+            </a>
+          </div>
+          <div className="contact-details">
+            <span className="contact-label">CONTACTO DIRECTO</span>
+            <a className="email-link" href={contact.mailto}>
+              {contact.email}
+              <Arrow />
+            </a>
+            <p>En Italia · Disponible para trabajo remoto</p>
+            <div className="contact-links">
+              <a
+                href={contact.github}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <EmailIcon fontSize="small" sx={{ marginRight: "0.5rem" }} />
-                miguelplasencia1902@gmail.com
-              </span>
-              <span
-                style={{
-                  color: "white",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <FmdGoodIcon fontSize="small" sx={{ marginRight: "0.5rem" }} />
-                Lima - Peru
-              </span>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box
-              component="form"
-              action="https://formspree.io/f/tu-endpoint"
-              method="POST"
-              sx={{
-                p: 3,
-                borderRadius: 2,
-                backgroundColor: "#040D1A",
-              }}
-            >
-              <TextField
-                label="Tu Correo"
-                name="email"
-                type="email"
-                fullWidth
-                required
-                margin="normal"
-                InputProps={{
-                  style: {
-                    color: "#fff",
-                  },
-                }}
-                InputLabelProps={{
-                  style: {
-                    color: "#A6AFBA",
-                  },
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    backgroundColor: "#051431",
-                    "& fieldset": {
-                      borderColor: "#4E89A5",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#4E89A5",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#4E89A5",
-                    },
-                  },
-                  "& input:-webkit-autofill": {
-                    WebkitBoxShadow:
-                      "0 0 0 1000px rgba(255, 255, 255, 0.1) inset",
-                    WebkitTextFillColor: "#fff",
-                    transition: "background-color 5000s ease-in-out 0s",
-                  },
-                }}
-              />
-              <TextField
-                label="Asunto"
-                name="subject"
-                type="text"
-                fullWidth
-                required
-                margin="normal"
-                InputProps={{
-                  style: {
-                    color: "#fff",
-                  },
-                }}
-                InputLabelProps={{
-                  style: {
-                    color: "#A6AFBA",
-                  },
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    backgroundColor: "#051431",
-                    "& fieldset": {
-                      borderColor: "#4E89A5",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#4E89A5",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#4E89A5",
-                    },
-                  },
-                }}
-              />
-              <TextField
-                label="Mensaje"
-                name="message"
-                multiline
-                rows={4}
-                fullWidth
-                required
-                margin="normal"
-                InputProps={{
-                  style: {
-                    color: "#fff",
-                  },
-                }}
-                InputLabelProps={{
-                  style: {
-                    color: "#A6AFBA",
-                  },
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    backgroundColor: "#051431",
-                    "& fieldset": {
-                      borderColor: "#4E89A5",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#4E89A5",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#4E89A5",
-                    },
-                  },
-                }}
-              />
-              <Button type="submit" fullWidth sx={{ mt: 2 }}>
-                Enviar
-              </Button>
-            </Box>
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
-    </Container>
+                <Icon name="github" /> GitHub <Arrow />
+              </a>
+              <a href={contact.cv} download>
+                <Icon name="download" /> Descargar CV en PDF
+              </a>
+            </div>
+            <p className="contact-hint">
+              Para trabajos con datos, describe el formato y el volumen
+              aproximado. Para una web, comparte su objetivo y las secciones que
+              necesitas.
+            </p>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
